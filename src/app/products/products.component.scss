@@ -1,0 +1,18 @@
+$light-gray: #cec9c2;
+$text-color: #2cb0f7;
+
+table {
+  .cart {
+   background-color: $light-gray;
+  }
+  a.shopping-cart
+  {
+    float: right;
+  }
+}
+.store-info {
+color: $text-color;
+}
+.plain-text {
+color: black;
+}

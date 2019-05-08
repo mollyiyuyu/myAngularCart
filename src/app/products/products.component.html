@@ -1,0 +1,42 @@
+<div>
+  <p class="store-info">
+    welcome to the Angular Store.<br>
+    Please select the products you want and add them to your shopping cart.<br>
+    When you are done, click the shopping cart icon to review your order and check out.
+  </p>
+
+  <span>Search:</span>
+  <input [(ngModel)]="searchInfo">
+  <table class="table table-bordered">
+    <tr>
+      <td class="cart" colspan="4">
+        <a class="shopping-cart" href="/cart">
+          <mat-icon>shopping_cart</mat-icon>
+          <span> {{totalNumber}}items </span>
+          <span> ${{totalPrice}} </span>
+        </a>
+        </td>
+      </tr>
+    <tr  *ngFor="let product of AllProducts | search: searchInfo">
+      <td><img src="../assets/img/products/{{product.img}}.png" height="60" width="60"></td>
+
+      <td>
+        <a [routerLink]="['/product',product.sku]">
+           <p class="store-info">{{product.name}}</p>
+           <p class="plain-text">{{product.description}}</p>
+        </a>
+      </td>
+      <td>${{product?.price}}</td>
+      <td><button (click)="addToCart(product)">add to cart</button></td>
+    </tr>
+    <tr>
+      <td class="cart" colspan="4">
+        <a class="shopping-cart" href="/cart">
+          <mat-icon>shopping_cart</mat-icon>
+          <span> {{totalNumber}}items </span>
+          <span> ${{totalPrice}} </span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>

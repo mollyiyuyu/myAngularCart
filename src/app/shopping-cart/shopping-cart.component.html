@@ -1,0 +1,75 @@
+<div class="text-info">
+  <p>Thanks for shopping at the Angular Store.<br />
+  This is your shopping cart. Here you can edit the items,
+  go back to the store, clear the cart, or check out.
+  </p>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="span8">
+      <h2 *ngIf="getTotalNumber() < 1"> Sorry, we didn't find anything in your cart</h2>
+        <table class="table table-bordered" *ngIf="getTotalNumber() > 0">
+          <tr class="header">
+            <td>Item</td>
+            <td>Quantity</td>
+            <td>Price</td>
+            <td></td>
+          </tr>
+          <tr *ngFor="let item of items">
+            <td>{{item.product.name}}</td>
+            <td>
+              <input [(ngModel)]="item.quantity" (change)="saveItems()">
+              <button class="btn btn-success" type="button" (click)="addItem(item)">+</button>
+              <button class="btn btn-primary" type="button" (click)="removeItem(item)">-</button>
+            </td>
+            <td>{{item.product.price * item.quantity|currency}}</td>
+            <td>
+              <button (click)="deleteItem(item)">
+                <mat-icon>close</mat-icon>
+              </button>
+            </td>
+          </tr>
+          <tr class="header">
+            <td>Total</td>
+            <td>{{totalNumber}}</td>
+            <td>{{totalPrice | currency}}</td>
+            <td></td>
+          </tr>
+        </table>
+    </div>
+
+    <div class="span4" *ngIf="getTotalNumber() > 0" >
+          <button class="btn btn-block btn-primary" (click)="backToStore()">
+            <mat-icon>store</mat-icon> back to store
+          </button>
+          <button class="btn btn-block btn-danger" (click)="clearItems()">
+            <mat-icon>close</mat-icon> clear cart
+          </button>
+
+
+        <br /><br />
+
+
+          <button class="btn btn-block btn-primary">
+            <mat-icon>check</mat-icon> check out using Google
+          </button>
+          <button class="btn btn-block btn-primary">
+            <mat-icon>check</mat-icon>check out using Stripe
+          </button>
+
+
+        <br /><br />
+
+
+          <button
+            class="btn btn-block btn-link">
+            <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="checkout PayPal"/>
+          </button>
+
+      </div>
+    </div>
+
+  </div>
+

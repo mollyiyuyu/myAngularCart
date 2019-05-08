@@ -1,0 +1,60 @@
+<div>
+  <img src="../assets/img/products/{{product.img}}.png" height="60" width="60"/>
+  <span> {{product.name}}: {{product.description}} </span>
+</div>
+<div class="container">
+  <div class="row">
+  <div class="span8">
+    <table class="table table-bordered">
+      <tr>
+        <td class="cart" colspan="4">
+          <a href="/cart" class="shopping-cart">
+            <mat-icon>shopping_cart</mat-icon>
+            <b>{{totalNumber}}</b> items, <b>{{totalPrice | currency}}</b>
+            <span *ngIf="isInCart(product)"><br />this item is in the cart</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td><p>calories</p></td>
+        <td><h1>{{product.cal}}</h1></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr *ngFor="let nutrient of nutrients">
+        <td>{{nutrient}}</td>
+        <td><img src="../assets/img/star{{[product.nutrient[nutrient]]}}.png">
+        <td><b>{{amount[product.nutrient[nutrient]]}}</b>: {{percent[product.nutrient[nutrient]]}}
+             of the recommended daily value.</td>
+      </tr>
+      <tr>
+        <td class="cart" colspan="4">
+          <a href="/cart" class="shopping-cart">
+            <mat-icon>shopping_cart</mat-icon>
+            <b>{{totalNumber}}</b> items, <b>{{totalPrice | currency}}</b>
+            <span *ngIf="isInCart(product)"><br />this item is in the cart</span>
+          </a>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+
+     <div class="span4">
+        <button class="btn btn-block btn-success" (click)="addToCart(product)">
+          <mat-icon>shopping_cart</mat-icon> add to cart
+        </button>
+
+       <button class="btn btn-block btn-danger" (click)="remove(product)">
+           <mat-icon>restore-from-trash</mat-icon> remove from cart
+       </button>
+
+       <button class="btn btn-block btn-primary" (click)="backToStore()">
+            <mat-icon>store</mat-icon> back to store
+        </button>
+    </div>
+
+</div>
+</div>
+
+
+<p>hello</p>

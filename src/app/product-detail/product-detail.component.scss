@@ -1,0 +1,21 @@
+$text-color: #2cb0f7;
+$light-gray: #cec9c2;
+
+.container {
+  margin-left: 0;
+}
+
+.cart {
+  background-color: $light-gray;
+}
+a.shopping-cart {
+ float:right;
+}
+.span8 {
+padding-right: 10px;
+}
+span {
+color: $text-color;
+}
+
+
